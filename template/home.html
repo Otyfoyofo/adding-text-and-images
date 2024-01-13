@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+{% load thumbnail %}
+
+{% block title %} My home page {% endblock %}
+
+{% block body %}
+    <!-- <a href="{% url 'hello:post' %}">Add a new post &rarr;</a> -->
+    <hr>
+    
+<div class="row">
+   {% for post in posts %}
+      
+<!-- <a href="{% url 'hello:detail' post.id %}">
+      {% thumbnail post.image "100x100" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
+      <hr> 
+</a> -->
+              <div class="col-sm-6 col-md-3">
+                  <div class="card my-4"  >
+                    {% thumbnail post.image "200x200" crop="center" as im %}
+                    <img src="{{ im.url }}" class="card-img-top" alt="...">
+                    {% endthumbnail %}
+                    <div class="card-body">
+                      <p class="card-text">{{ post.text }}</p>
+                      <!-- <p class="card-text">{{ post.text_1 }}</p> -->
+                      <a href="{% url 'hello:detail' post.id %}" class="btn btn-primary">view the full image</a>
+                    </div>
+                  </div> 
+                </div>
+             {% empty %}
+             <div class="col-sm-4 offset-sm-4 py-5 text-center">
+               <h3>Welcome!</h3>
+               <p>Uploade your first image here?</p>
+               <a href="{% url 'hello:post' %}" class="btn btn-lg btn-success">Click Here!</a>
+             </div>
+
+  {% endfor %}
+                
+</div>
+              
+  {% endblock %}

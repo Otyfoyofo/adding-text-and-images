@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<!-- <a href="{% url 'hello:index' %}">&larr;Go back</a>      -->
+<div class="row">
+    <div class="col-sm-10 offset-sm-2 py-5">
+
+            {{ object.text }}<br>
+            <h3>Image</h3>
+            <img src="{{ object.image.url }}" class="img-fluid">
+        
+    </div>
+        
+</div>
+        
+{% endblock %}
